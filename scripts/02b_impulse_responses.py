@@ -72,8 +72,9 @@ def figure3(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def plot(est: pd.DataFrame, title: str, ylabel: str, path) -> None:
+    """Three panels side by side (fits the full text width of the report)."""
     series = list(CREDIT.values())
-    fig, axes = plt.subplots(len(series), 1, figsize=(6.5, 8.2), sharex=True)
+    fig, axes = plt.subplots(1, len(series), figsize=(10, 3.0), sharey=True)
     for ax, (panel, s) in zip(axes, zip("ABC", series)):
         e = est[est.series == s].sort_values("horizon")
         lo, hi = e.coef - Z90 * e.se, e.coef + Z90 * e.se
@@ -83,14 +84,13 @@ def plot(est: pd.DataFrame, title: str, ylabel: str, path) -> None:
         ax.plot(e.horizon, hi, color="0.4", lw=0.8, ls="--")
         ax.axhline(0, color="0.3", lw=0.6)
         ax.set_title(f"Panel {panel}. {s}", fontsize=10, loc="left")
-        ax.set_ylabel(ylabel, fontsize=9)
+        ax.set_xlabel("Years after the shock", fontsize=9)
+        ax.set_xticks(list(HORIZONS))
         ax.tick_params(labelsize=8)
         ax.spines[["top", "right"]].set_visible(False)
-    axes[-1].set_xlabel("Years after the shock", fontsize=9)
-    axes[-1].set_xticks(list(HORIZONS))
-    fig.suptitle(title, fontsize=11, x=0.02, ha="left")
-    fig.text(0.02, 0.005, "Shaded area and dashed lines: 90 percent confidence band. Own replication.", fontsize=8)
-    fig.tight_layout(rect=(0, 0.02, 1, 0.97))
+    axes[0].set_ylabel(ylabel, fontsize=9)
+    # title and notes are in the LaTeX caption; `title` is kept for the function signature
+    fig.tight_layout()
     fig.savefig(path)
     plt.close(fig)
 
