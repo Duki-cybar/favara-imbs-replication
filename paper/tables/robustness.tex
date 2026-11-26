@@ -1,0 +1,23 @@
+\begin{tabular}{lccc}
+\toprule
+\multicolumn{4}{l}{\textit{2SLS, number of loans}} \\
+Specification & Coefficient (SE) & First-stage $F$ & Obs. \\
+\midrule
+Baseline (Table 5, col. 1) & 0.141** (0.069) & 10.2 & 11,107 \\
+Without lagged house price & 0.315** (0.126) & 11.1 & 11,107 \\
+Only lagged house price as control & 0.125** (0.053) & 16.9 & 11,110 \\
+No controls & 0.303*** (0.081) & 23.9 & 12,013 \\
+OLS (no instrument) & 0.005*** (0.001) & -- & 11,107 \\
+Unweighted (no $w_1$) & -0.034** (0.014) & 43.1 & 11,107 \\
+SEs clustered by state & 0.141 (0.129) & 4.3 & 11,107 \\
+Inelastic supply (below median) & 0.070 (0.058) & 7.9 & 4,851 \\
+Elastic supply (above median) & -0.031 (0.045) & 4.3 & 4,829 \\
+\midrule
+\multicolumn{4}{l}{\textit{95\% confidence sets}} \\
+Credit measure & Wald (HAC) & AR (HAC) & AR (state clusters) \\
+\midrule
+Number of loans & [0.01, 0.28] & [0.05, 0.44] & [-0.03, 3.00]$^{a}$ \\
+Loan volume & [0.01, 0.26] & [0.05, 0.40] & [-0.03, 1.81] \\
+Loan to income & [0.01, 0.23] & [0.04, 0.40] & [-0.03, 1.03] \\
+\bottomrule
+\end{tabular}

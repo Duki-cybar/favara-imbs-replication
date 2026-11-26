@@ -1,0 +1,51 @@
+# --- Data: raw data never goes into Git -----------------------------------
+*.csv
+*.dta
+*.parquet
+*.xlsx
+*.xls
+*.zip
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Exception: small, aggregated files the Streamlit app needs online
+# (Streamlit Community Cloud only sees what is in the repo)
+!dashboard/data/*.csv
+!dashboard/data/*.parquet
+
+# --- macOS / editors ------------------------------------------------------
+.DS_Store
+.vscode/
+.idea/
+
+# --- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.env
+.streamlit/secrets.toml
+
+# --- LaTeX temporary files ------------------------------------------------
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.nav
+*.snm
+*.xdv
+paper/*.pdf
+!data/raw/hpi_at_bdl_county.xlsx

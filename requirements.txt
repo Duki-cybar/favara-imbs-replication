@@ -1,0 +1,11 @@
+# Analysis pipeline (run_all.py), tested with Python 3.13 on 12 Nov 2026
+pandas==3.0.5
+numpy==2.5.3
+scipy==1.18.1          # critical values for significance stars
+pyarrow==26.0.1        # parquet files in data/processed
+matplotlib==3.11.2     # figures for the report
+openpyxl==3.1.5        # reads the FHFA Excel file (extension)
+
+# Dashboard (PS4), tested locally with these versions
+streamlit==1.67.0
+plotly==7.1.0
